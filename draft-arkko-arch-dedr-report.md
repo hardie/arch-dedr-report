@@ -185,7 +185,7 @@ The Design Expectations vs. Deployment Reality in Protocol Development  Workshop
 
    Note: While late in being submitted, this report is still an early version. Comments and contributions are appreciated. We expect to call for review of the -01 version.
 
-The background for the workshop was that a number of protocols have presumed specific deployment models during the development or early elaboration of the protocol. Actual deployments have, however, often run contrary to these early expectations when economies of scale, DDoS resilience, market consolidation, or other factors have come into play. These factors can result in the deployed reality being highly concentrated.
+The background for the workshop was that a number of protocols have presumed specific deployment models during the development or early elaboration of the protocol. Actual deployments have, however, often run contrary to these early expectations when economies of scale, DDoS resilience, market consolidation, or other factors have come into play. These factors can result in the deployed reality being significantly different from the original design; one common pattern is that heterogenous, decentralized services become concentrated in a small number of providers, data sources, or code bases.
 
 This is a serious issue for the Internet, as concentrated, centralized deployment models present risks to user choice, privacy, and future protocol evolution.
 
@@ -197,13 +197,13 @@ Email standards, which presumed many providers running in a largely uncoordinate
 
 The DNS, which presumed deep hierarchies but has often been deployed in large, flat zones, leading to the nameservers for those zones becoming critical infrastructure. Future developments in DNS may see concentration through the use of globally available common resolver services, which evolve rapidly and can offer better security. Paradoxically, concentration of these queries into few services creates new security and privacy concerns.
 
-The Web, which is built on a fundamentally decentralized design, but which is now often delivered with the aid of Content Delivery Networks. Their services provide scaling, distribution, and Denial of Service prevention in ways that new entrants and smaller systems operators would find difficult to replicate. While truly small services and truly large ones may operate using only their own infrastructure, many others are left with the only practical choice being the use of a globally available commercial service.
+The Web, which is built on a fundamentally decentralized design, but which is now often delivered with the aid of Content Delivery Networks. CDNs provide scaling, distribution, and Denial of Service prevention in ways that new entrants and smaller systems operators would find difficult to replicate. While truly small services and truly large ones may operate using only their own infrastructure, many others are left with the only practical choice being the use of a globally available commercial service.
 
-Similar developments may happen with future technologies and services. For instance, the growing use of Machine Learning technology presents challenges for distributing effective implementation of a service throughout a pool of many different providers.
+Similar developments may happen with future technologies and services.
 
-In {{RFC5218}} the IAB tackled what made for a successful protocol. In {{RFC8170}}, the IAB described how to handle protocol transitions. This purpose of the workshop was to explore cases where the initial system design assumptions turned out to be wrong, looking for patterns in what caused those assumptions to fail (e.g., concentration due to DDoS resilience) and in how those failures impact the security, privacy, and manageability of the resulting deployments.
+In {{RFC5218}} the IAB tackled what made for a successful protocol. In {{RFC8170}}, the IAB described how to handle protocol transitions. This immediate purpose of the workshop was to explore cases where the initial system design assumptions turned out to be wrong, looking for patterns in what caused those assumptions to fail (e.g., concentration due to DDoS resilience) and in how those failures impact the security, privacy, and manageability of the resulting deployments.
 
-While the eventual goals might include proposing common remediations for specific cases of confounded protocol expectations.
+The long-term goals include proposing common remediations for specific cases of confounded protocol expectations.
 
 The workshop call for papers invited the submission of position papers which would:
 
@@ -261,17 +261,17 @@ The workshop investigated deployment cases from WebPKI to DNSSEC, from BGP to NA
 
 Several underlying principles can be observed in the example cases that were discussed. Deployment failures tend to be associated with cases where interdependencies make progress difficult and there's no major advantage for early deployment. Despite persistent problems in the currently used technology, it becomes difficult for the ecosystem to switch to better technology. For instance, there are a number of areas where the Internet routing protocol, BGP, is lacking, but success in deploying significant improvements has been lacking, for instance in the area of security.
 
-Another principle appears to be first mover advantage. Several equally interesting technologies have fared in very different ways, depending whether there was an earlier system that provided most of the benefits of the new system. Again, despite potential problems in an already deployed technology, it becomes difficult to deploy improvements due to lack of immediate incentives and due to the competing and already deployed alternative that is proceeding forward in the ecosystem. For instance, WebPKI is very widely deployed and used, but DNSSEC is not. Is this because the earlier commercial adoption of WebPKI, and the initially more complex interdependencies between systems that wished to deploy DNSSEC.
+Another principle appears to be first mover advantage. Several equally interesting technologies have fared in very different ways, depending whether there was an earlier system that provided most of the benefits of the new system. The availability of tools, communities of practicioners, and network effects of interlocked systems provide incentives for industry to remain on a deployed technology rather than adopting one which provides similar functionality.  As an example, DNSSEC has been proposed as a replacement for the WebPKI in TLS authentication.  Because the resulting security properties are similar, that shift has been hard to achieve even for those promoting the technology.
 
 The workshop also discussed different types of deployment patterns on the Internet:
 
-* Delivering functionality over Internet as a web service. The Internet is an open and standardised system, but the service on top may be closed, essentially running two components of the service provider's software against each other over the browser and Internet infrastructure. Several large application systems have grown in the Internet in this manner, encompassing large amounts of functionality and a large fraction of Internet users.
+* Delivering functionality over Internet as a web service. The Internet is an open and standardised system, but the services on top may be closed, essentially running two components of the service provider's software against each other over the browser and Internet infrastructure. Several large application systems have grown in the Internet in this manner, encompassing large amounts of functionality and a large fraction of Internet users.
 
-* Delivering concentrated network services that offer the standard capabilities of the Internet. Examples in this category include the provisioning of DNS resolution, some mail services, and so on.
+* Concentration of services that offer the standard capabilities of the Internet. Examples in this category include the provisioning of DNS resolution, video hosting, mail services, and so on.
 
 The second case is more interesting for an Internet architecture discussion. There can, however, be different underlying situations in that case. The service may be simply a concentrated way to provide a commodity service. The market should find a natural equilibrium for such situations. This may be fine, particularly, where the service does not provide any new underlying advantage to whoever is providing it (in the form of user data that can be commercialized, for instance, or as training data for an important machine learning service).
 
-Secondly, the service may be an extension beyond standard protocols, leading to some questions about how well standards and user expectations match. But those questions could be addressed by better or newer standards. But the third situation is more troubling: the service are provided in this concentrated manner due to business patterns that make it easier for particular entities to deploy such services.
+Secondly, the service may be an extension beyond standard protocols, leading to some questions about how well standards and user expectations match. But those questions could be addressed by better or newer standards. But the third situation is more troubling: the services are provided in this concentrated manner due to business patterns that make it easier for particular entities to deploy such services.
 
 ## Centralised deployment models
 
@@ -281,22 +281,22 @@ The hopeful side of this issue is that there are some potential answers:
 
 * DDOS defenses do not have to come through large entities, as layered defenses and federation also helps similarly.
 * Surveillance state data capture can be fought with data object encryption, and not storing all of the datal in one place.
-* Open interface help guard against the bundling of services in one large entity; as long as there are open, well-defined interface to specific functions these functions can also be performed by other parties.
+* Open interfaces help guard against the bundling of services in one large entity; as long as there are open, well-defined interface to specific functions these functions can also be performed by other parties.
 * Commercial surveillance does not seem to curbed by current means. But there are still possibilities, such as stronger regulation, data minimisation, or browsers acting on behalf of users. There are hopeful signs that at least some browsers are becoming more aggressive in this regard. But more is needed.
 
-One comment made in the workshop that the Internet community needs to move back from regulation to trying to curb the architectural trend of centralization instead. Another comment was that discussing this in the abstract is not as useful as more concrete, practical actions. For instance, one might imagine DOH deployments with larger number of trusted resolvers.
+One comment made in the workshop that the Internet community needs to move back from regulation to trying to curb the architectural trend of centralization instead. Another comment was that discussing this in the abstract is not as useful as more concrete, practical actions. For instance, one might imagine DOH deployments with a larger number of trusted resolvers.
 
 ## Security
 
 This part of the discussed focused on whether in the current state of the Internet we actually need a new threat model.
 
-Many of the communications security concerns have been addressed in the past few years, with increasing encryption. However, issues with trusting endpoints on the other side of the communication have not been addressed, and are becoming more urgent with the advent or centralised service architectures.
+Many of the communications security concerns have been addressed in the past few years with increasing encryption. However, issues with trusting endpoints on the other side of the communication have not been addressed, and are becoming more urgent with the advent of centralised service architectures.
 
 The participants in the workshop agreed that a new threat model is needed, and that non-communications-security issues need to be treated.
 
 Other security discussions were focused on IOT systems, algorithm agility issues, and experiences from difficult security upgrades such as the DNSSEC key rollover.
 
-The participants cautioned against relying too much on device manufacturers for security, and being clear on security models and assumptions. Security is often poorly understood, and the assumptions about who the system defends against and not are not clear.
+The participants cautioned against relying too much on device manufacturers for security, and being clear on security models and assumptions. Security is often poorly understood, and the assumptions about who the system defends against and who it does not are often unclear.
 
 ## Future
 
@@ -308,7 +308,7 @@ The workshop turned into a discussion of what actions we can take:
 * Work at the IETF?
 * Technical solutions/choices?
 
-The best way for ietf to do things is through standards; convinging people through other requests is difficult. The IETF needs to:
+The best way for the IETF to do things is through standards; convincing people through other requests is difficult. The IETF needs to:
 
 * pick pieces that it is responsible for
 * being reactive for the rest, be available as an expert in other discussions, provide Internet technology clue where needed, etc.
@@ -317,7 +317,7 @@ One key question is what other parties need to be involved in any discussions. P
 
 The workshop also discussed specific technology issues, for instance around IOT systems. One observation in those systems is that there is no single model for applications, they vary. There are a lot of different constraints in different systems and different control points. What is needed perhaps most today is user control and transparency (for instance, via MUD descriptions). Another issue is management, particularly for devices that could be operational for decades. Given the diversity of IOT systems, it may also make more sense to build support systems for the broader solutions that specific solutions or specific protocols.
 
-There are also many security issues. While some of them are trivial (such as default passwords), one should also look forward and be prepared to have solutions for, say, trust management for long time scales, or be able to provide data minimization to cut down on potential for leakages. And the difficulty of establishing peer-to-peer security strengthens the need for a central point, which may also be harmful from a long-term privacy perspective.
+There are also many security issues. While some of them are trivial (such as default passwords), one should also look forward and be prepared to have solutions for, say, trust management for long time scales, or being able to provide data minimization to cut down on potential for leakages. The difficulty of establishing peer-to-peer security strengthens the need for a central point, which may also be harmful from a long-term privacy perspective.
 
 # Conclusions
 
@@ -333,15 +333,15 @@ While the workshop discussed actions and advice, there is a critical question of
 
 The workshop also made some technical observations. One recent trend is that technology is moving up the stack, e.g., in the areas of services, transport protocol functionality, security, naming, and so on. This impacts how easy or hard changes are, and who is able to perform them.
 
-It was also noted that interoperability continues to be important, and we need to explore what new interfaces need standardisation — this will enable different deployment models & competition. Prime factor driving deployments is actual needs; we cannot force anything to others but can provide solutions for those that need them. Needs and actions may fall on different parties.
+It was also noted that interoperability continues to be important, and we need to explore what new interfaces need standardisation — this will enable different deployment models & competition. The prime factor driving deployments is actual needs; we cannot force anything on others but can provide solutions for those that need them. Needs and actions may fall on different parties.
 
-The workshop also considered the balancing of user non-involvement and transparency and choice, relevant threats such as communicating with malicious endpoints, the role and willigness of browsers in increasing the ability to defending the users’ privacy, and concerns around centralised control or data storage points
+The workshop also considered the balancing of user non-involvement and transparency of choice, relevant threats such as communicating with malicious endpoints, the role and willigness of browsers in increasing the ability to defending the users’ privacy, and concerns around centralised control or data storage points
 
 The workshop also discussed specific issues around routing, denial-of-service attacks, IOT systems, role of device manufacturers, the DNS, and regulatory reactions and their possible consequences.
 
 ## Actions
 
-The prime conclusion from the workshop was that the topic is not completed in the workshop. Much more work is needed. The best way for ietf to do things is through standards. The IETF should focus on the parts that it is responsible for, and be available as an expert on other discussions.
+The prime conclusion from the workshop was that the topic was not completed in the workshop. Much more work is needed. The best way for ietf to do things is through standards. The IETF should focus on the parts that it is responsible for, and be available as an expert on other discussions.
 
 The documents/outputs and actions described in the following were deemed relevant by the participants.
 
